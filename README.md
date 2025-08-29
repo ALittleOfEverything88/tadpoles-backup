@@ -9,7 +9,6 @@ This tool will allow you to save all your child's images and videos at full reso
 
 Providers:
 * Tadpoles
-* ~~Bright Horizons~~ (currently broken see [Issue #48](https://github.com/leocov-dev/tadpoles-backup/issues/48))
 
 ---
 ## Install
@@ -19,9 +18,6 @@ Get the [latest](https://github.com/leocov-dev/tadpoles-backup/releases/latest) 
 executable from the [releases](https://github.com/leocov-dev/tadpoles-backup/releases) page.
 Download the zip file for your system/architecture.
 
-> **macOS** Gatekeeper will prevent you from running unsigned apps.
-> You can allow the app from system preferences or by right-clicking
-> the file and choosing open from the menu.
 
 ---
 ## Usage
@@ -57,56 +53,7 @@ $ tadpoles-backup --provider tadpoles reset-password <email>
 The tool stores your _www.tadpoles.com_ authentication cookie for future use so that you don't need to enter your password every time.
 This cookie lasts for about 2 weeks. Your email and password are never stored.
 
-#### Bright Horizons
 
-Due to how the system provides download data the `backup` command can't use cached data for speed-up.
-Every run of the `backup` command will fetch all reports and may take some time.
-
-The tool stores your _mybrightday.brighthorizons.com_ api-key for future use so that you don't need to enter your password every time.
-This api-key may only expire if you change your password. Your email and password are never stored.
-
----
-## Container Image
-Pre-built images are available from the repos [Packages page](https://github.com/leocov-dev/tadpoles-backup/pkgs/container/tadpoles-backup).
-
-```shell
-$ docker pull ghcr.io/leocov-dev/tadpoles-backup:latest
-
-# list account info
-$ docker run --rm -eUSERNAME=<email> -ePASSWORD=<password> ghcr.io/leocov-dev/tadpoles-backup stat
-
-# download new images
-$ docker run --rm -eUSERNAME=<email> -ePASSWORD=<password> -v$HOME/Pictures/tadpoles:/images ghcr.io/leocov-dev/tadpoles-backup backup /images
-
-# enable api response caching by mapping app data directory
-$ docker run --rm -eUSERNAME=<email> -ePASSWORD=<password> -v$HOME/.tadpoles-backup:/app/.tadpoles-backup ghcr.io/leocov-dev/tadpoles-backup stat
-```
-
-You may also build the docker image locally.
-```shell
-# will be automatically tagged as `tadpoles-backup`
-$ make docker-image
-```
-
-### Docker Compose / Kubernetes
-
-Please note that this utility is intended to run as a scheduled job.
-
-[Examples](examples) are available.
-
-#### Kubernetes
-
-This [example](examples/kubernetes) configures a `CronJob` that will run on a schedule. It's best to configure
-this so that only 1 job instance will run at a time. The example uses `kustomize` for
-configuration to provide authentication environment vars as a secret.
-
-#### Docker Compose
-
-This [example](examples/docker-compose.yml) configures a basic service with env
-vars defining the login values. Its important to remember that this service will
-exit after each run.
-
----
 ## Development
 
 See the contributing guide [here](CONTRIBUTING.md).
