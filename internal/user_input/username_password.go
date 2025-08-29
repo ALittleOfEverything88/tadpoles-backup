@@ -4,12 +4,13 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"golang.org/x/crypto/ssh/terminal"
 	"os"
 	"strings"
 	"tadpoles-backup/config"
 	"tadpoles-backup/internal/utils"
 	"tadpoles-backup/pkg/headings"
+
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 func GetUsernameAndPassword() (string, string) {

@@ -35,9 +35,11 @@ var (
 	NonInteractiveMode bool
 	JsonOutput         bool
 
-	EnvUsername = os.Getenv("USERNAME")
-	EnvPassword = os.Getenv("PASSWORD")
-	EnvProvider = os.Getenv("PROVIDER")
+	EnvUsername    = os.Getenv("USERNAME")
+	EnvPassword    = os.Getenv("PASSWORD")
+	EnvResetCode   = os.Getenv("RESET_CODE")
+	EnvNewPassword = os.Getenv("NEW_PASSWORD")
+	EnvProvider    = os.Getenv("PROVIDER")
 
 	Provider = NewProviderConfig(AllProviders(), DefaultProvider)
 

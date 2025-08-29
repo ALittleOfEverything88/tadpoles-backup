@@ -3,12 +3,14 @@ package tadpoles
 import (
 	"context"
 	"fmt"
-	log "github.com/sirupsen/logrus"
 	"net/http"
 	"tadpoles-backup/internal/api"
 	"tadpoles-backup/internal/schemas"
+	"tadpoles-backup/internal/user_input"
 	"tadpoles-backup/pkg/async"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type ApiSpec struct {
@@ -105,5 +107,16 @@ func (a *ApiSpec) RequestPasswordReset(email string) error {
 		Timeout: 60 * time.Second,
 	}
 
-	return requestPasswordReset(client, a.endpoints.resetUrl, email)
+	err := requestPasswordReset(client, a.endpoints.resetUrl, email)
+	if err != nil {
+		return err
+	}
+
+	resetCode, newPassword := user_input.GetResetCode()
+	err = resetPassword(a.Client, a.endpoints.resetPassUrl, resetCode, newPassword)
+	if err != nil {
+		return err
+	}
+	log.Debug("Password reset successful")
+	return nil
 }

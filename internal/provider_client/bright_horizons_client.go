@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	log "github.com/sirupsen/logrus"
 	"net/http"
 	"net/url"
 	"tadpoles-backup/config"
@@ -14,6 +13,8 @@ import (
 	"tadpoles-backup/internal/user_input"
 	"tadpoles-backup/pkg/async"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type BrightHorizonsClient struct {
