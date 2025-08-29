@@ -81,3 +81,4 @@ make test
 * @arthurnn - for assistance with Docker image
 * @AndyRPH - for assistance with Bright Horizons support
 * @s0rcy - for assistance with Tadpoles password reset
+* Talha Anis - for fixing the password reset after Tadpoles made an auth change
