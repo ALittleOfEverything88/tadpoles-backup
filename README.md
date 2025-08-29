@@ -12,12 +12,7 @@ Providers:
 
 ---
 ## Install
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/leocov-dev/tadpoles-backup)](https://github.com/leocov-dev/tadpoles-backup/releases/latest)
-
-Get the [latest](https://github.com/leocov-dev/tadpoles-backup/releases/latest) prebuilt
-executable from the [releases](https://github.com/leocov-dev/tadpoles-backup/releases) page.
-Download the zip file for your system/architecture.
-
+Download the exe from above and run
 
 ---
 ## Usage
